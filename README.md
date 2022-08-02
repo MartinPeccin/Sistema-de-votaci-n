@@ -1,1 +1,1 @@
-# Sistema-de-votaci-n
+# Sistema-de-votacion
