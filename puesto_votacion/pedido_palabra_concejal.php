@@ -1,11 +1,6 @@
 <?PHP
 include("conexion2.php");
-/*session_start();
-$nombre = $_SESSION['nombre'] ;
-$tipo_usuario = $_SESSION['tipo_usuario'] ;
-$id_usuario = $_SESSION['id_usuario'] ;*/
 
-//echo $id_usuario
 $id_usuario = $_GET['cod3'];//usuario
 $id_destino = $_GET['cod4'];
 
