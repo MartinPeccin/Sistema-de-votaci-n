@@ -4,15 +4,10 @@ $usuariodb = $_POST['user'];// db user
 $clavedb = $_POST['pass'];// dp pass
 $id_usuario = $_POST['id_user']; // id usuario registrado
 
-//include("abrir_conexion.php");
+
 
 $host = "localhost";    // sera el valor de nuestra BD
-//$basededatos = "Propietario";    // sera el valor de nuestra BD
 $basededatos = "votoHCD";    // sera el valor de nuestra BD
-//$usuariodb = "root";    // sera el valor de nuestra BD
-//$clavedb = "raspy2019";    // sera el valor de nuestra BD
-//$usuariodb = "c1";
-//$clavedb = "c1hcd";
 //Lista de Tablas
 $tabla_db1 = "sistema_votacion"; 	   // tabla de sistema
 $table_db3 = "estado_votacion"; // table de concejales
