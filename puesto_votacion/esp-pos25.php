@@ -4,21 +4,17 @@ $usuariodb2 = $_POST['user'];// db user
 $id_usuario = $_POST['cod3'];// dp pass
 $codigo2 = $_POST['cod4']; // id usuario registrado
 
-//include("abrir_conexion.php");
 
 $host = "localhost";    // sera el valor de nuestra BD
-//$basededatos = "Propietario";    // sera el valor de nuestra BD
+
 $basededatos = "votoHCD";    // sera el valor de nuestra BD
-//$usuariodb = "root";    // sera el valor de nuestra BD
-//$clavedb = "raspy2019";    // sera el valor de nuestra BD
-//$usuariodb = "c1";
-//$clavedb = "c1hcd";
+
 //Lista de Tablas
 $tabla_db1 = "sistema_votacion"; 	   // tabla de sistema
 $table_db3 = "estado_votacion"; // table de concejales
 $tabla_db2 = "usuarios"; // tabla usuarios
 $estado = 0;
-//$habilitar_voto = 0;
+
 
 //error_reporting(0); //No me muestra errores
 $votacion_positiva=0;
@@ -26,10 +22,8 @@ $votacion_negativa=0;
 $votacion_abstencion=0;
 //$usuario
 
-//$usuariodb = "root";
-//$clavedb = "raspy2019";
 $usuariodb = "martin";
-$clavedb = "mar301378";
+$clavedb = "xxxxxx";
 
 
 // COnsignacion Voto, OBSERVACION: asignacion de bloque completo por presidente
