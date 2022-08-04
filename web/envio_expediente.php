@@ -6,8 +6,7 @@ $id_usuario = $_SESSION['id_usuario'] ;
 
 //include("conexion2.php");
 include("conexion2.php");
-//$datos_conexion = mysqli_connect("localhost","root","raspy2019","votoHCD")
-//or die ("No se pudo conectar con la base de datos");
+
 $fecha_ingreso = $_POST['fecha_ingreso'];
 $numero_expediente = $_POST['numero_expediente'];
 $anio_expediente = $_POST['anio_expediente'];
