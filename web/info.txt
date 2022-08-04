@@ -1,1 +1,1 @@
-
+Esta carpeta contiene la ccapa de vista que utiliza el sistema para interactuar con el sistema de votación
