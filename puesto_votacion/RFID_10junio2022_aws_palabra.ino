@@ -8,36 +8,18 @@ const int botonPalabra = 15;
 // pedidoPalabra: Auxiliary variables
 boolean pedidoPalabra = false;
 
-// Checks if motion was detected, sets LED HIGH and starts a timer
+// Verifico si boton Pedido de Palabra se activo
 ICACHE_RAM_ATTR void detectsPalabra() {
   Serial.println("TOuch Detection!!!");
   pedidoPalabra = true;
   }
-// interrupcion pedido palabra ----------------------
-
-// interrupcion logout  ----------------------
-// Set GPIOs for touch logout
-//const int botonLogout = 16;
-// logout: Auxiliary variables
-//boolean pedidoLogout = false;
-
-// Checks if motion was detected, sets LED HIGH and starts a timer
-/*ICACHE_RAM_ATTR void detectsLogout() {
-  Serial.println("Logout Detection!!!");
-  pedidoLogout = true;
-  }*/
-// interrupcion pedido palabra ----------------------
-
 
 /// LCD --------------------------------------------------------------------------
-#include <Wire.h> // responsável pela comunicação com a interface i2c
-#include <LiquidCrystal_I2C.h> // responsável pela comunicação com o display LCD
-// Inicializa o display no endereço 0x27
-//os demais parâmetros, são necessários para o módulo conversar com o LCD
-//porém podemos utilizar os pinos normalmente sem interferência
-//parâmetro: POSITIVE > > Backligh LIGADO | NEGATIVE > > Backlight desligado
+#include <Wire.h> // interface i2c
+#include <LiquidCrystal_I2C.h> // display LCD
+// Inicializa display  0x27
 LiquidCrystal_I2C lcd(0x27,2,1,0,4,5,6,7,3, POSITIVE);
-//LiquidCrystal_I2C lcd(0x20,2,1,0,4,5,6,7,3, POSITIVE);
+
 
 /// LCD --------------------------------------------------------------------------
 
@@ -46,8 +28,6 @@ LiquidCrystal_I2C lcd(0x27,2,1,0,4,5,6,7,3, POSITIVE);
 
 constexpr uint8_t RST_PIN = D3;     // Configurable, see typical pin layout above
 constexpr uint8_t SS_PIN = D4;     // Configurable, see typical pin layout above
-
-//constexpr uint8_t GPIO_Pin = D8; // defino pin interrupcion
 
 MFRC522 rfid(SS_PIN, RST_PIN); // Instance of the class
 MFRC522::MIFARE_Key key;
@@ -61,8 +41,6 @@ String tag=""; // tag de tarjeta RFID
 #include <ESP8266WiFiMulti.h>
 
 #include <Separador.h> // libreria de separacion de caracteres usado para separar informacion enviada desde el server
-
-
 Separador s; // variable de separacion de la libreria separacion
 
 
@@ -92,8 +70,8 @@ char letra; // lineas comando via monitor serial
 String comando; //- lineas comando via monitor serial 
 int incomingByte = 0;
 
-#define touchPin  D0 // Pin for capactitive touch sensor
-#define touchPin1  10 // Pin for capactitive touch sensor
+#define touchPin  D0 // Pin touch sensor
+#define touchPin1  10 // Pin touch sensor
 
 
 
@@ -102,16 +80,11 @@ void setup() {
   Serial.begin(9600);
   // Interrupcion pedido palabra -----------------
   pinMode(botonPalabra, INPUT);
-  // Set motionSensor pin as interrupt, assign interrupt function and set RISING mode
+  // Set touch button pin as interrupt, assign interrupt function and set RISING mode
   attachInterrupt(digitalPinToInterrupt(botonPalabra), detectsPalabra, RISING );
   // ----------------
-  // Interrupcion logout -----------------
-  //pinMode(botonLogout, INPUT);
-  // Set motionSensor pin as interrupt, assign interrupt function and set RISING mode
-  //attachInterrupt(digitalPinToInterrupt(botonLogout), detectsLogout, RISING );
-  //  -----------------
-
   
+    
   lcd.begin(20, 4); // Setup LCD 16x2
   lcd.print("  Sistema Votacion");
   lcd.setCursor(0, 1);
@@ -148,16 +121,12 @@ void setup() {
 
 void loop() {
 
-  //----------- pedido palabra interrupcion ---
+  //----------- detecto si pedido palabra (interrupcion) fue activado ---
   if(pedidoPalabra) {
     Serial.println("Se registro Pedido de Palabra");    
     pedidoPalabra = false;
   }
-  /*if(pedidoLogout) {
-    Serial.println("Se registro Pedido de Logout");    
-    pedidoLogout = false;
-    
-  }*/
+ 
   
   //------------ pedido palabra interrupcion ---
 
@@ -417,15 +386,9 @@ if (registracion==0){
                           delay(500);
                           //variable=0;
                           }
-            
-            
-  
-  
-  
-  
-  
-  
-  
+               
+
+ 
   
 }
 
