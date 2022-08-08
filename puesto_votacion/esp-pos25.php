@@ -1,20 +1,31 @@
 <?php
-//tomo variables de POST
-$usuariodb2 = $_POST['user'];// db user
-$id_usuario = $_POST['cod3'];// dp pass
-$codigo2 = $_POST['cod4']; // id usuario registrado
+//Este modulo guarda en BD el resultado de votacion en curso correspondiente al usuario
+//tomo variables de POST para verifica tarjeta RFID, usuario
+// informacion IN : USER ( user base de datos), cod3 ( id_usuario),  cod4(votacion positiva o negativa)
+///OUT informacion: no envia info al modulo de votacion
+/// Cambios en BD: se actualiza el valor de la tabla estado_votacion los campos 	registro_votacion='$registro_votacion',
+//	votacion_positiva='$votacion_positiva',
+//	votacion_negativa='$votacion_negativa',
+//	votacion_abstencion='$votacion_abstencion'
+//Correspondientes al id_usuario
 
+$usuariodb2 = $_POST['user'];// db user DB (a futuro permitira fijar restricciones acceso tablas)
+$id_usuario = $_POST['cod3'];// id_usuario
+$codigo2 = $_POST['cod4']; // valor votacion
 
 $host = "localhost";    // sera el valor de nuestra BD
-
+//$basededatos = "Propietario";    // sera el valor de nuestra BD
 $basededatos = "votoHCD";    // sera el valor de nuestra BD
-
+//$usuariodb = "root";    // sera el valor de nuestra BD
+//$clavedb = "raspy2019";    // sera el valor de nuestra BD
+//$usuariodb = "c1";
+//$clavedb = "c1hcd";
 //Lista de Tablas
 $tabla_db1 = "sistema_votacion"; 	   // tabla de sistema
 $table_db3 = "estado_votacion"; // table de concejales
 $tabla_db2 = "usuarios"; // tabla usuarios
 $estado = 0;
-
+//$habilitar_voto = 0;
 
 //error_reporting(0); //No me muestra errores
 $votacion_positiva=0;
@@ -22,8 +33,10 @@ $votacion_negativa=0;
 $votacion_abstencion=0;
 //$usuario
 
+//$usuariodb = "root";
+//$clavedb = "raspy2019";
 $usuariodb = "martin";
-$clavedb = "xxxxxx";
+$clavedb = "mar301378";
 
 
 // COnsignacion Voto, OBSERVACION: asignacion de bloque completo por presidente
@@ -53,7 +66,7 @@ if ($conexion->connect_errno) {
 	echo "Nuestro sitio experimenta fallos....";
 	exit();
 }else {
-
+// asigno valor a la votacion en funcion de la eleccion del usuario
 	if ($codigo2==1){
 
 	           $votacion_positiva=$votacion ;
@@ -71,6 +84,7 @@ if ($conexion->connect_errno) {
 	$registro_votacion=$votacion;
 	$tabla_db = "estado_votacion";
 	//$presente=1;
+  // envio el valor de votacion a la Base de datos
 	$_UPDATE_SQL="UPDATE $tabla_db Set
 	registro_votacion='$registro_votacion',
 	votacion_positiva='$votacion_positiva',
@@ -83,25 +97,18 @@ if ($conexion->connect_errno) {
 
 
 	}
-
-
-	//$variablep=1;
-	//echo intval("$estadovoto"); // si esta habilitada la votacion
-	//echo $estadovoto;//
-	echo "Var2";
-	//echo $habilitar_voto; //elemento 1 http request
+// por ahora envio informacion de devolucion sin uso
+	echo "Var2"; //sin uso
+	 //elemento 1 http request
 	echo ",";
-	echo "Var2"; //elemento 2 http request
-	//echo intval("$estado_voto_concejal"); // si voto el concejal
-	//echo intval("$variablep"); //
-	//echo $variablep;//
-	//echo $estadovoto2;
+	echo "Var2"; //elemento 2 http request sin uso
+
 	echo ",";
-	echo "Var3"; //elemento 3 http request
+	echo "Var3"; //elemento 3 http request sin uso
 	//echo $estadovoto2;// nombre usuario
 	echo ",";
-	//echo $variablep2;// tipo usuario
-	echo "Var4"; //elemento 4 http request
+
+	echo "Var4"; //elemento 4 http request sin uso
 
 
 
