@@ -14,8 +14,8 @@ $id_usuario = $_POST['cod3'];// dp pass
 $host = "localhost";    // sera el valor de nuestra BD
 //$basededatos = "Propietario";    // sera el valor de nuestra BD
 $basededatos = "votoHCD";    // sera el valor de nuestra BD
-$usuariodb = "martin";
-$clavedb = "mar301378";
+$usuariodb = "xxxxxx";
+$clavedb = "xxxxxxx";
 
 $conexion = new mysqli($host,$usuariodb,$clavedb,$basededatos);
 
