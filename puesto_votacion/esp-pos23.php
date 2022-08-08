@@ -11,8 +11,12 @@ $tag = $_POST['tag']; // tag tarjeta RFID
 //include("abrir_conexion.php");
 
 $host = "localhost";    // sera el valor de nuestra BD
+//$basededatos = "Propietario";    // sera el valor de nuestra BD
 $basededatos = "votoHCD";    // sera el valor de nuestra BD
-
+//$usuariodb = "root";    // sera el valor de nuestra BD
+//$clavedb = "raspy2019";    // sera el valor de nuestra BD
+//$usuariodb = "c1";
+//$clavedb = "c1hcd";
 //Lista de Tablas
 $tabla_db1 = "sistema_votacion"; 	   // tabla de sistema
 $table_db3 = "estado_votacion"; // table de concejales
@@ -73,24 +77,13 @@ if ($conexion->connect_errno) {
 	}
 
 
-
-	//$variablep=1;
-	//echo intval("$estadovoto"); // si esta habilitada la votacion
-	//echo $estadovoto;//
-	//echo $elemento1;
-	echo $apellido_db; //elemento 1 http request
+	echo $apellido_db; //asigno valor Apellido usuario
 	echo ",";
-	echo $estado; //elemento 2 http request
-	//echo intval("$estado_voto_concejal"); // si voto el concejal
-	//echo intval("$variablep"); //
-	//echo $variablep;//
-	//echo $estadovoto2;
+	echo $estado; //Seteo valor de login al sistema de votacion (luego lo lee el dispositivo de votacion )
 	echo ",";
-	echo $id_usuario; //elemento 3 http request
-	//echo $estadovoto2;// nombre usuario
+	echo $id_usuario; //asigno id_usuario
 	echo ",";
-	//echo $variablep2;// tipo usuario
-	echo "Var4"; //elemento 4 http request
+	echo "Var4"; //Variable sin uso actual 
 
 
 
