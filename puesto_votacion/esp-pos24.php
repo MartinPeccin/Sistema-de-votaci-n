@@ -1,13 +1,23 @@
 <?php
+// COnsulto a Base de datos para saber si la votacion esta habilitada y si el usuario ya voto
 //tomo variables de POST
+// informacion IN : USER ( user base de datos), PASS ( pw base de datos), id_user (ID usuario)
+///OUT informacion:  $habilitar_voto(verifico si la votacion esta habilitada), $registro_voto (verifico si el usaurio realizao votacion)
+
+
 $usuariodb = $_POST['user'];// db user
 $clavedb = $_POST['pass'];// dp pass
 $id_usuario = $_POST['id_user']; // id usuario registrado
 
+//include("abrir_conexion.php");
 
-
-$host = "localhost";    // sera el valor de nuestra BD
+$host = "localhost";    // server
+//$basededatos = "Propietario";    // sera el valor de nuestra BD
 $basededatos = "votoHCD";    // sera el valor de nuestra BD
+//$usuariodb = "root";    // sera el valor de nuestra BD
+//$clavedb = "raspy2019";    // sera el valor de nuestra BD
+//$usuariodb = "c1";
+//$clavedb = "c1hcd";
 //Lista de Tablas
 $tabla_db1 = "sistema_votacion"; 	   // tabla de sistema
 $table_db3 = "estado_votacion"; // table de concejales
@@ -28,56 +38,39 @@ if ($conexion->connect_errno) {
 	else {
 									//echo "Ok conexion";
 									$id_estado=2;
-									$sql = "SELECT * FROM sistema_votacion WHERE id_sistema_votacion='$id_estado' "; //verifico si existe tarjeta RFID registrada con usuario
+									$sql = "SELECT * FROM sistema_votacion WHERE id_sistema_votacion='$id_estado' "; //verifico esta habilitado la votacion
 									$resultado = mysqli_query($conexion, $sql);
 									$num = $resultado->num_rows;
-																if ($num>0){	// si existe usuario
+																if ($num>0){	// existe busqueda
 																	$row = $resultado->fetch_assoc(); 				 //Asigno la peticion SQL a la variable arreglo $Resultado
-																	$habilitar_voto = $row['estado_sistema'];  // asigno valor Apellido usuario
-																	//$estado = 1;														 // Seteo valor de login al sistema de votacion (luego lo lee el dispositivo de votacion )
-																	//$id_usuario=$row['id_usuario'];					// asigno id_usuario
-
-																	/*$tabla_db = "estado_votacion";
-																	$presente=1;
-																	$_UPDATE_SQL="UPDATE $tabla_db Set
-																	presente='$presente'
-																	WHERE id_usuario ='$id_usuario'";
-																	mysqli_query($conexion,$_UPDATE_SQL);*/
-
+																	$habilitar_voto = $row['estado_sistema'];  // asigno valor estado de sistema correspondiente a Funcion de sistema=habilitar voto
 
 																} else {
 																	//$estado = 0;
 
 																}
-
+																// verifico si el usuario realizo la votacion
 																$resultados2 = mysqli_query($conexion,"SELECT * FROM estado_votacion WHERE id_usuario ='$id_usuario' ");
 																while($consulta2 = mysqli_fetch_array($resultados2))
 																  {
 																  $registro_voto=$consulta2['registro_votacion'];
-																  //$registro2=$consulta2['registro_sistema'];
 																  }
 
 
 
 
 
-									//$variablep=1;
-									//echo intval("$estadovoto"); // si esta habilitada la votacion
-									//echo $estadovoto;//
-									//echo $elemento1;
-									echo $habilitar_voto; //elemento 1 http request
+
+									echo $habilitar_voto; //elemento 1 http request - verifico si la votacion esta habilitada
 									echo ",";
-									echo $registro_voto; //elemento 2 http request
-									//echo intval("$estado_voto_concejal"); // si voto el concejal
-									//echo intval("$variablep"); //
-									//echo $variablep;//
-									//echo $estadovoto2;
+									echo $registro_voto; //elemento 2 http request - verifico si el usaurio realizao votacion
+
 									echo ",";
-									echo "Var3"; //elemento 3 http request
-									//echo $estadovoto2;// nombre usuario
+									echo "Var3"; //elemento 3 http request - variable sin uso
+
 									echo ",";
-									//echo $variablep2;// tipo usuario
-									echo "Var4"; //elemento 4 http request
+
+									echo "Var4"; //elemento 4 http request - variable sin uso
 
 
 					}
