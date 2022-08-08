@@ -51,18 +51,11 @@ String tag=""; // tag de tarjeta RFID
 
 Separador s; // variable de separacion de la libreria separacion
 
-const char* ssid    = "RED-T"; // Red Wifi
-const char* password = "2020twifi";
-//const char* password = "2020twifi";  // clave Wifi
-//const char* ssid    = "WIFI HCD Planta Alta"; // Red Wifi
-//const char* password = "HCDSarmiento2CE";
-//const char* ssid    = "UNIFI-AP-VOTO"; // Red Wifi
-//const char* password = "raspy2021";
-//const char* ssid    = "MOVISTAR WIFI4283"; // Red Wifi
-//const char* password = "wqsa4255";
+const char* ssid    = "xxxxxx"; // Red Wifi
+const char* password = "xxxxxx";
 
-String user = "martin";  // user base de datos
-String pass = "mar301378"; //  pw base de datos
+String user = "xxxxx";  // user base de datos
+String pass = "xxxxxx"; //  pw base de datos
 
 
 int estado;
@@ -95,7 +88,7 @@ Serial.println(id_usuario);
 //pedidoPalabra = false;
 HTTPClient http;
 String datos_a_enviar4 = "user=" + user + "&cod3=" + id_usuario; // Armo variable compuesta "datos_a_enviar" (String)
-http.begin("http://54.94.52.76/HCDvoto/PuestoVotacion/esp-pos26.php");        //Indicamos el destino
+http.begin("http://xxxxxxx/HCDvoto/PuestoVotacion/esp-pos26.php");        //Indicamos el destino
 http.addHeader("Content-Type", "application/x-www-form-urlencoded"); //Preparamos el header text/plain si solo vamos a enviar texto plano sin un paradigma llave:valor.
 int codigo_respuesta4 = http.POST(datos_a_enviar4);
 
@@ -207,7 +200,7 @@ if (registracion==0){
                                                 String datos_a_enviar = "user=" + user + "&pass=" + pass + "&tag=" + tag; // Armo variable compuesta "datos_a_enviar" (String)
 
                                                 //http.begin("http://10.3.141.70/Pruebas/esp-pos23.php");        //Indicamos el destino
-                                                http.begin("http://54.94.52.76/HCDvoto/PuestoVotacion/esp-pos23.php");        //Indicamos el destino
+                                                http.begin("http://xxxxxx/HCDvoto/PuestoVotacion/esp-pos23.php");        //Indicamos el destino
                                                 //Mediante el Request a esp-pos23.php consultamos si el TAG de la tarjeta RFID se encuentra registrado y asociado a algun usuario
                                                 http.addHeader("Content-Type", "application/x-www-form-urlencoded"); //Preparamos el header text/plain si solo vamos a enviar texto plano sin un paradigma llave:valor.
 
@@ -297,7 +290,7 @@ if (registracion==0){
                                           HTTPClient http;
                                           String datos_a_enviar2 = "user=" + user + "&pass=" + pass + "&id_user=" + id_usuario; // Armo variable compuesta "datos_a_enviar" (String)
 
-                                          http.begin("http://54.94.52.76/HCDvoto/PuestoVotacion/esp-pos24.php");        //Indicamos el destino
+                                          http.begin("http://xxxxxxx/HCDvoto/PuestoVotacion/esp-pos24.php");        //Indicamos el destino
                                           http.addHeader("Content-Type", "application/x-www-form-urlencoded"); //Preparamos el header text/plain si solo vamos a enviar texto plano sin un paradigma llave:valor.
 
                                           int codigo_respuesta2 = http.POST(datos_a_enviar2);   //Enviamos el post pasándole, los datos que queremos enviar. (esta función nos devuelve un código que guardamos en un int)
@@ -373,7 +366,7 @@ if (registracion==0){
                                                                                                           HTTPClient http;
                                                                                                           String datos_a_enviar3 = "user=" + user + "&cod3=" + id_usuario + "&cod4=" + positivo; // Armo variable compuesta "datos_a_enviar" (String)
                                                                                                           // envio los datos de User=usuario base de datos(a futuro permitira fijar restricciones), cod3=id_usuario, cod4=voto positivo o negativp
-                                                                                                          http.begin("http://54.94.52.76/HCDvoto/PuestoVotacion/esp-pos25.php");        //Indicamos el destino
+                                                                                                          http.begin("http://xxxxxxx/HCDvoto/PuestoVotacion/esp-pos25.php");        //Indicamos el destino
                                                                                                           http.addHeader("Content-Type", "application/x-www-form-urlencoded"); //Preparamos el header text/plain si solo vamos a enviar texto plano sin un paradigma llave:valor.
 
                                                                                                           int codigo_respuesta3 = http.POST(datos_a_enviar3);
