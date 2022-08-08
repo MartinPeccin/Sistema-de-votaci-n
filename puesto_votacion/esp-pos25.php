@@ -35,8 +35,8 @@ $votacion_abstencion=0;
 
 //$usuariodb = "root";
 //$clavedb = "raspy2019";
-$usuariodb = "martin";
-$clavedb = "mar301378";
+$usuariodb = "xxxxxx";
+$clavedb = "xxxxx";
 
 
 // COnsignacion Voto, OBSERVACION: asignacion de bloque completo por presidente
